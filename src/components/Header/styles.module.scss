@@ -1,0 +1,64 @@
+.headerContainer {
+    height: 5rem;
+    border-bottom: 1px solid var(--gray-800);
+}
+
+.headerContent {
+    max-width: 1120px;
+    height: 5rem;
+    margin: 0 auto;
+    padding: 0 2rem;
+
+    display: flex;
+    align-items: center;
+
+    nav {
+        margin-left: 5rem;
+        height: 5rem;
+
+        a {
+            display: inline-block;
+            position: relative;
+            padding: 0 0.5rem;
+            height: 5rem;
+            line-height: 5rem; //line-height === height -> Centraliza elemento ao meio
+            color: var(--gray-300);
+
+            transition: color 0.2s;
+
+            & + a { //Toda <a> que tiver outra <a> antes dela
+                margin-left: 2rem;
+            }
+
+            &:hover {
+                color: var(--white);
+            }
+
+            &.active {
+                color: var(--white);
+                font-weight: bold;
+            }
+
+            /* 
+                ::after -> Serve para estilizarmos algo (que não esteja declarado na arvore de elementos)
+                logo após a tag em questão
+                ::before -> Serve para estilizarmos algo (que não esteja declarado na arvore de elementos)
+                antes da tag em questão
+            */
+            &.active::after {
+                content: ''; //É importante ter o content mesmo que seja vazio
+                height: 3px;
+                border-radius: 3px 3px 0 0;
+                width: 100%;
+                position: absolute;
+                bottom: 1px;
+                left: 0;
+                background: var(--yellow-500);
+            }
+        }
+    }
+
+    button {
+        margin-left: auto;
+    }
+}
