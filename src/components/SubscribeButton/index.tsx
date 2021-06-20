@@ -4,11 +4,7 @@ import { api } from '../../services/api';
 import { getStripeJs } from '../../services/stripe-js';
 import styles from './styles.module.scss';
 
-interface SubscribeButtonProps {
-    priceId: string;
-}
-
-export function SubscribeButton({ priceId }: SubscribeButtonProps) {
+export function SubscribeButton() {
     const [session] = useSession();
     const router = useRouter();
 
@@ -20,7 +16,8 @@ export function SubscribeButton({ priceId }: SubscribeButtonProps) {
         }
 
         /* Caso o usuário já tenha uma assinatura ativa será redirecionado 
-        para a pagina de posts(a aplicação não vai deixar q/ ele faça uma assinatura novamente) */
+        para a pagina de posts(a aplicação não vai deixar q/ ele faça uma assinatura
+        novamente) */
         if(session.activeSubscription) {
             router.push('/posts');
             return;
